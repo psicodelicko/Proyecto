@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!--Nav -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!--<title>FLOWERSANDPOWER</title>-->
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min.js">
+    <link rel="stylesheet" href="min.css">
+    <link rel="stylesheet" href="{% static 'core/css/stylos.css'%}">
+    <link rel="stylesheet" href="popper.min.js">
+
+</head>
+
+    <!--- Navbar Superior-->
+    {%block content %}
+    <div>
+        {% include "Nav.html " %}
+    </div>
+    {%endblock%}
+    <!--- Cuerpo Historico-->
+
+    <body>
+        <br>
+        <br>
+        <Div class="text">
+            <Center>
+                <h1><i>!!!Bienvenido Usuario!!!</i></h1>
+        </Div>
+        </Center>
+        <Center>
+            <h4><i>A continuacion tu historial de compras</i></h4>
+            </Div>
+        </Center>
+        <center>
+            <center><img src="{% static 'core/img/Flowers.png' %}" alt="" width="100" height="100"></center>
+            <br>
+
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3" style="background-color:rgb(110, 234, 126)">
+                        <center>
+                            <h3>Fecha de Compra</h3>
+                        </center>
+                    </div>
+                    <div class="col-lg-3" style="background-color:rgb(110, 234, 126)">
+                        <h3>N° de Boleta</h3>
+                    </div>
+                    <div class="col-lg-3" style="background-color:rgb(110, 234, 126)">
+                        <h3>Detalle de productos</h3>
+                    </div>
+                    <div class="col-lg-3" style="background-color:rgb(110, 234, 126)">
+                        <h3>Precio</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        Marzo 10 de 2022
+                    </div>
+                    <div class="col">
+                        000324234
+                    </div>
+                    <div class="col">
+                        Tierra de Hojas 15 litros
+                    </div>
+                    <div class="col">
+                        $7.990
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        Abril 13 de 2022
+                    </div>
+                    <div class="col">
+                        000897656
+                    </div>
+                    <div class="col">
+                        Macetero 10 litros
+                    </div>
+                    <div class="col">
+                        $18.990
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+            <!--- Footer-->
+            <div>
+                {% include "Footer.html" %}
+            </div>
+
+
+
+
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Pagina de Inicio</title>
+    <!--<title>FLOWERSANDPOWER</title>-->
+
+</head>
+
+<body>
+    <!--<h1>FLOWERSANDPOWER</h1>-->
+   <!--- Navbar Superior-->
+   {%block content %}
+   <div>
+       {% include "Nav2.html " %}
+   </div>
+   {%endblock%}
+
+
+
+
+
+    <!--- Categorias-->
+    <div id="games ">
+        <div class="container-md p-5 ">
+            <div class="row pt-5 ">
+                <h3 id="texto " class=" text-center pb-5 pt-5 h1 "> <strong>Conoce nuestro equipo</strong></h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="categorias " class="row ">
+        <div class="col-sm ">
+            <div class="card w-40 card-border mb-2 ">
+                <div class="text-center ">
+                    {% load static %}
+                    <img src="{% static 'core/img/1_Lisa.png'%}" class="rounded " alt=" " width="100 " height="100 ">
+                </div>
+                <div class="card-body ">
+                    <center>
+                        <h5 id="textocardnosotros " class="card-title ">Camila Castro</h5>
+                        <p id="textocardnosotros " class="card-text ">Los mejores futuros ingieneros en informatica &#128527</p>
+                    </center>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-sm ">
+            <div class="card w-40 card-border mb-2 ">
+                <div class="text-center ">
+                    {% load static %}
+                    <img src="{% static 'core/img/3_bart.jpg'%}" class="rounded " alt=" " width="100 " height="100 ">
+                </div>
+                <div class="card-body ">
+                    <center>
+                        <h5 id="textocardnosotros " class="card-title ">Diego Araya</h5>
+                        <p id="textocardnosotros " class="card-text ">Los mejores futuros ingieneros en informatica &#128527</p>
+                    </center>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm ">
+            <div class="card w-40 card-border mb-2 ">
+                <div class="text-center ">
+                    {% load static %}
+                    <img src="{% static 'core/img/2_ned.jpg'%}" class="rounded " alt=" " width="100 " height="100 ">
+                </div>
+                <div class="card-body ">
+                    <center>
+                        <h5 id="textocardnosotros " class="card-title ">Yerko Vásquez</h5>
+                        <p id="textocardnosotros " class="card-text ">Los mejores futuros ingieneros en informatica &#128527</p>
+                    </center>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+      <!--- Footer-->
+      <div>
+        {% include "Footer.html" %}
+    </div>
+
+
+
+
+        <div id="modaldesconnexion " class="modal " tabindex="-1 ">
+            <div class="modal-dialog ">
+                <div class="modal-content ">
+                    <div class="modal-header ">
+                        <h5 class="modal-title ">Desconectar Cuenta</h5>
+                        <button type="button " class="btn-close " data-bs-dismiss="modal " aria-label="Close "></button>
+                    </div>
+                    <div class="modal-body ">
+                        <p>¿Desea cerrar sesión?</p>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button " class="btn btn-secondary " data-bs-dismiss="modal ">Si</button>
+                        <button type="button " class="btn btn-primary ">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js " crossorigin="anonymous "></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js " integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM " crossorigin="anonymous "></script>
+        <script>
+            $("#modaldesconnexionb ").on('click', function() {
+                $("#modaldesconnexion ").modal('show');
+            });
+        </script>
+
+</html>
+
+</html>
+
+</html>

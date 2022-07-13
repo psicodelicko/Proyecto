@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
+    <title>Pagina de Inicio</title>
+    <!--<title>FLOWERSANDPOWER</title>-->
+    <link rel="stylesheet" href="{% static 'core/css/stylos.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'bootstrap.min.js'%}">
+    <link rel="stylesheet" href="{% static 'min.css'%}">
+    <link rel="stylesheet" href="popper.min.js">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--<h1>FLOWERSANDPOWER</h1>-->
+    <!--- Navbar Superior-->
+{%block content %}
+    <div>
+        {% include "Nav.html " %}
+    </div>
+{%endblock%}
+
+    <!--- Centro de pago API PAYPAL-->
+    <!-- Replace "test" with your own sandbox Business account app client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=ASdBZU7W9pw7z7H2eH5SBe2ORcouslGF8mYMO0QtoSuaHqz2QxN0mp7KyQa6Am8ZyLF2O-dQxvlIZdjF&currency=USD"></script>
+    <!-- Set up a container element for the button -->
+    <div>
+        <br><br><br><br><br><br><br><br>
+    </div>
+    <center>
+        <div id="paypal-button-container"></div>
+    </center>
+    <script>
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'black',
+                shape: 'rect',
+                label: 'paypal',
+
+                // Sets up the transaction when a payment button is clicked
+                createOrder: (data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                "currency_code": "USD",
+                                "value": "100",
+                                "breakdown": {
+                                    "item_total": { /* Required when including the `items` array */
+                                        "currency_code": "USD",
+                                        "value": "100"
+                                    }
+                                }
+                            },
+                            "items": [{
+                                "name": "First Product Name",
+                                /* Shows within upper-right dropdown during payment approval */
+                                "description": "Optional descriptive text..",
+                                /* Item details will also be in the completed paypal.com transaction view */
+                                "unit_amount": {
+                                    "currency_code": "USD",
+                                    "value": "50"
+                                },
+                                "quantity": "2"
+                            }, ]
+                        }]
+                    });
+                },
+                // Finalize the transaction after payer approval
+                onApprove: (data, actions) => {
+                    return actions.order.capture().then(function(orderData) {
+                        // Successful capture! For dev/demo purposes:
+                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                        const transaction = orderData.purchase_units[0].payments.captures[0];
+                        alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                        // When ready to go live, remove the alert and show a success message within this page. For example:
+                        // const element = document.getElementById('paypal-button-container');
+                        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                        // Or go to another URL:  actions.redirect('thank_you.html');
+                    });
+                }
+            }
+        }).render('#paypal-button-container');
+    </script>
+    <div>
+        <br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <!--- Footer-->
+    <div>
+        {% include "Footer.html" %}
+    </div>
+</body>
+
+</html>

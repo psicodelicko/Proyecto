@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Pagina de Inicio</title>
+    <!--<title>FLOWERSANDPOWER</title>-->
+    <link rel="stylesheet" href="{% static 'core/css/stylos.css'%}">
+
+
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/bootstrap.min.js">
+    <link rel="stylesheet" href="static/min.css">
+    <link rel="stylesheet" href="{% static 'core/css/stylos.css'%}">
+    <link rel="stylesheet" href="static/popper.min.js">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<!--<h1>FLOWERSANDPOWER</h1>-->
+<!--- Navbar Superior-->
+{%block content %}
+<div>
+    {% include "Nav.html " %}
+</div>
+{%endblock%}
+
+<body>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 aling-self-center">
+                <h2 class="display -1" id="texto"> <strong>Detalle Productos</strong></h2>
+            </div>
+        </div>
+    </div>
+    <br> <br>
+
+
+    <div class="row">
+        <div class="col-8">
+            <div class="row">
+                {% csrf_token %}
+
+                <!--- Categorias-->
+                <div id="games">
+                    <div class="container-md p-5">
+                        <h3 class=" text-center pb-5 pt-5 h1"> <strong>Detalle producto</strong></h3>
+                        <div class="row pt-5">
+
+
+                            <div class="container">
+                                <div class="row" id="divPerfil">
+                                    <div class="col">
+                                        <img id="imagenseguimiento" src="{{producto.imagen.url}}"
+                                            class="rounded" alt="" width="500" height="400">
+
+                                    </div>
+                                    <div class="col">
+                                        <form>
+                                            <fieldset disabled>
+                                                <legend>Carateristicas</legend>
+                                                <div class="mb-3">
+                                                    <label for="disabledTextInput" class="form-label">Codigo
+                                                        producto</label>
+                                                    <input type="text" id="disabledTextInput" class="form-control"
+                                                        placeholder="{{producto.idProducto}}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="disabledTextInput" class="form-label">Nombre
+                                                        producto</label>
+                                                    <input type="text" id="disabledTextInput" class="form-control"
+                                                        placeholder="{{producto.nombreProducto}}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="disabledTextInput" class="form-label">Categoria</label>
+                                                    <input type="text" id="disabledTextInput" class="form-control"
+                                                        placeholder="{{producto.categoria}}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="disabledTextInput" class="form-label">Descripcion</label>
+                                                    <input type="text" id="disabledTextInput" class="form-control"
+                                                        placeholder="{{producto.descripcionProducto}}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="disabledTextInput"
+                                                        class="form-label">Precio</label>
+                                                    <input type="text" id="disabledTextInput" class="form-control"
+                                                        placeholder="{{producto.precioProducto}}">
+                                                </div>
+
+
+                                            </fieldset>
+                                            <a href=" http://127.0.0.1:8000/agregar_producto/{{producto.idProducto}} " class="btn btn-primary">
+                                                Agregar a Carrito</a>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-4 ">
+            {% include "BCarrito.html " %}
+        </div>
+    </div>
+
+
+
+    <!--- Footer-->
+
+    <div>
+        {% include "Footer.html" %}
+    </div>
+</body>
+
+</html>

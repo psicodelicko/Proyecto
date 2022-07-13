@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'core/css/F_C_estilos.css'%}">
+
+    <!--Nav -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <title>Creación de cuenta</title>
+</head>
+<!--<h1>nav FLOWERSANDPOWER</h1>-->
+<nav class="navbar navbar-expand-sm navbar-dark bg-white">
+    <div class="container-fluid">
+
+
+        <img src="{% static 'core/img/Flowers.png' %}" alt="" width="100">
+        <h6><i>Flowers and Power </i></h6>
+        <a class="navbar-brand">
+        </a>
+
+        <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon bg-dark"></span>
+
+
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="{% url 'index_home' %}">Pagina Principal</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false">Cuenta Usuario</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'InicioSesion1' %}">Acceder</a></li>
+                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#modaldesconnexion"
+                                id="modaldesconnexionb">Desconectar Cuenta</a></li>
+                        <li><a class="dropdown-item" href="{% url 'F_Crear_Cuenta' %}">Crear Cuenta de Usuario</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Seguimiento' %}">Seguimiento de Compra</a></li>
+                        <li><a class="dropdown-item" href="{% url 'HistoricoCompra' %}">Historico de Compras</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="Producto.html" role="button"
+                        aria-expanded="false">Producto</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'Producto'%}">Ver Productos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'Categoria1'%}">Ver Categorias</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="{% url 'Contacto'%}">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="Nosotros">Nosotros</a>
+                </li>
+            </ul>
+            <br>
+        </div>
+    </div>
+    </form>
+</nav>
+<!-- partial:index.partial.html -->
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="Estilos_Contacto.css" />
+
+</head>
+
+<body>
+    <div class="loader" style="display: none;">
+        <img src="images/Rolling-1s-200px.svg" style="max-width:150px;">
+    </div>
+    <div class="main-form mb-3">
+        <h class="text-center pt-3">
+
+
+        </h>
+        <div class="progress rounded-0" style="max-width:500px; margin:0 auto; height:7px;">
+            <div class="progress-bar" role="progressbar" style="width: 33.33333%;" aria-valuenow="33.33333"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <!-- Step 1 -->
+
+        <form method="post" id="forlumario"  >
+            <div class="row info-section py-3">
+                <div class="col-sm-3 text-center">
+                    <span class="iconify" aria-hidden="true"><i class="fas fa-home"></i></span>
+                </div>
+                <div class="col-sm-9 pl-sm-0">
+                    <h3 class="font-weight-light">Crear Cuenta</h3>
+                    <p id="description">Los Campos con (*) Son Obligatorios.</p>
+                </div>
+            </div>
+            {% csrf_token %}
+
+            <div class="form-group">
+
+                <div class="form-row">
+                    <div class="col-12 col-md-6 mb-2">
+                        {{form}}
+
+                    </div>
+    
+                
+                </div>
+            </div>
+
+                <input type="submit" class="btn btn-danger" value="enviar">
+                <input type="reset" class="btn btn-danger" value="limpiar">
+                <div id="error" class="alert alert-danger" role="alert"></div>
+                <div class="alert alert-success" role="alert">
+                    {{mensaje}}
+            
+                </div>
+                  
+            </form>
+
+            
+            
+            
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+        <script src="js.js"></script>
+
+
+
+        <!-- partial -->
+        <script src="{%static 'core/js/F_Contactos_Script.js'%}"></script>
+
+    </div>
+
+    <!--- Footer-->
+
+    <footer class="bg-dark text-white pt-5 pb-4">
+        <div class="container text-center text-md-left">
+            <div class="row text-center text-md-left">
+                <div class="col-md-3 col-lg-3  col-xl-3 mx-auto mt-3 ">
+                    <h5 class="text-uppercase mb-4 font-weigth-bold text-warning">Flowers And Power</h5>
+                    <p>Tienda Online de Maceteros, Tierra de Hojas y Arbustos. Nuestro objetivo es que cada venta ayude
+                        a la Fundacion Animalitos Chile
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weigth-bold text-warning">Categorias</h5>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration: none;">Maceteros</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration: none;">Tierra de Hojas</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration: none;">Arbustos</a>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+
+                    <h5 class="text-uppercase mb-4 font-wigth-bold text-warning">Redes Sociales</h5>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration: none;">Instagram</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration: none;">Facebook</a>
+                    </p>
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration: none;">Whatsapp</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weigth-bold text-warning">Contactanos</h5>
+                    <p>
+                        <i class="fas fa-home mr-3"></i>+56 9 9999 9999
+                    </p>
+                    <p>
+                        <i class="bi bi-envelope"></i>contacto@flowersandpower.cl
+                    </p>
+                    <p>
+                        <i class="fas fa-home mr-3"></i>despacho@flowersandpower.cl
+                    </p>
+
+
+
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="row align-item-center">
+                <div class="col-md-7 col-lg-8">
+                    <p> Copyrigth 2022 All Rigths reserver by:
+                        <a href="#" class="text-white" style="text-decoration: none;">
+                            <strong class="text-warning">The Providers</strong>
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!--- Modal Desconexion-->
+    <div id="modaldesconnexion" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Desconectar Cuenta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Desea cerrar sesión?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Si</button>
+                    <button type="button" class="btn btn-primary">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#modaldesconnexionb").on('click', function () {
+            $("#modaldesconnexion").modal('show');
+        });
+    </script>
+
+
+</body>
+
+</html>
